@@ -1,0 +1,249 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* 
+Design Philosophy: Architectural Precision
+- Swiss Modernism meets Contemporary Architecture
+- Mathematical harmony with 8px baseline grid
+- Refined near-monochromatic palette with surgical cyan accents
+- Typography-driven hierarchy
+- Restrained, purposeful interactions
+*/
+
+@theme inline {
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom font families */
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+:root {
+  /* Dark mode architectural precision palette */
+  --background: oklch(0.15 0.01 240); /* Deep slate #0f172a */
+  --foreground: oklch(0.98 0.002 240); /* High-contrast white #f8fafc */
+  --card: oklch(0.20 0.012 240); /* Elevated slate #1e293b */
+  --card-foreground: oklch(0.98 0.002 240);
+  --popover: oklch(0.20 0.012 240);
+  --popover-foreground: oklch(0.98 0.002 240);
+  --primary: oklch(0.75 0.15 195); /* Bright cyan #22d3ee */
+  --primary-foreground: oklch(0.15 0.01 240);
+  --secondary: oklch(0.24 0.014 240); /* Subtle slate */
+  --secondary-foreground: oklch(0.98 0.002 240);
+  --muted: oklch(0.24 0.014 240);
+  --muted-foreground: oklch(0.65 0.015 240); /* Muted gray #94a3b8 */
+  --accent: oklch(0.75 0.15 195); /* Cyan accent */
+  --accent-foreground: oklch(0.15 0.01 240);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.002 240);
+  --border: oklch(0.30 0.014 240 / 0.3); /* Subtle border */
+  --input: oklch(0.30 0.014 240 / 0.5);
+  --ring: oklch(0.75 0.15 195);
+  --chart-1: oklch(0.75 0.15 195);
+  --chart-2: oklch(0.65 0.12 195);
+  --chart-3: oklch(0.55 0.10 195);
+  --chart-4: oklch(0.45 0.08 195);
+  --chart-5: oklch(0.35 0.06 195);
+  --sidebar: oklch(0.20 0.012 240);
+  --sidebar-foreground: oklch(0.98 0.002 240);
+  --sidebar-primary: oklch(0.75 0.15 195);
+  --sidebar-primary-foreground: oklch(0.15 0.01 240);
+  --sidebar-accent: oklch(0.24 0.014 240);
+  --sidebar-accent-foreground: oklch(0.98 0.002 240);
+  --sidebar-border: oklch(0.30 0.014 240 / 0.3);
+  --sidebar-ring: oklch(0.75 0.15 195);
+  
+  /* Amber accent for warnings */
+  --accent-amber: oklch(0.80 0.15 85); /* #fbbf24 */
+  
+  /* Grid system */
+  --grid-opacity: 0.05;
+  --baseline-grid: 8px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.75;
+    font-size: 1.125rem; /* 18px */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h1 {
+    font-size: 5rem; /* 80px */
+    letter-spacing: -0.04em;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: 3rem; /* 48px */
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+  
+  h3 {
+    font-size: 2rem; /* 32px */
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  
+  /* Section numbering */
+  .section-number {
+    font-family: var(--font-display);
+    font-size: 8rem;
+    font-weight: 200;
+    line-height: 1;
+    opacity: 0.1;
+    user-select: none;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  
+  /* Blueprint grid background */
+  .blueprint-grid {
+    background-image: 
+      linear-gradient(to right, oklch(0.75 0.15 195 / var(--grid-opacity)) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.75 0.15 195 / var(--grid-opacity)) 1px, transparent 1px);
+    background-size: 8.333% 8px; /* 12-column grid */
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+      max-width: 1400px;
+    }
+  }
+  
+
+  
+  /* Metric callouts */
+  .metric-number {
+    font-family: var(--font-body);
+    font-size: 6rem;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.2s ease-out;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.85 0.12 210));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Subtle hover lift */
+  .hover-lift {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.15 0.01 240);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.30 0.014 240);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.75 0.15 195 / 0.5);
+}
